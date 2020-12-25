@@ -1,0 +1,8 @@
+.post {
+  background-color: rgb(171, 248, 248);
+  grid-area: c;
+}
+
+.item {
+  color:blueviolet;
+}
