@@ -1,8 +1,9 @@
-.post {
+.content {
   background-color: rgb(171, 248, 248);
   grid-area: c;
 }
 
-.item {
+.post {
+  margin-top: 10px;
   color:blueviolet;
 }
