@@ -1,25 +1,40 @@
 import React from "react";
-import Profile from "../Profile";
 import s from "./MyPost.module.css";
 import Post from "./Post/Post";
 
 const MyPost = (props) => {
-
-  let postsElements = props.posts.map((posts) => (
-    <Post item={posts.item} likesCount={posts.likesCount} />
+  let postsElements = props.posts.map((p) => (
+    <Post item={p.item} likesCount={p.likesCount} />
   ));
 
+  let newElementPost = React.createRef();
+
+  let addNewPost = () => {
+    let text = newElementPost.current.value;
+    props.addPost(text);
+  };
+
+  let onChangePost = () => {
+    let text = newElementPost.current.value;
+    props.onChangeArea(text);
+  };
   return (
     <div className={s.content}>
       <div>
         My posts
         <div>
-          <textarea></textarea>
-          <button>Add</button>
+          <textarea
+            onChange={onChangePost}
+            ref={newElementPost}
+            value={props.newPostText}
+          />
+        </div>
+        <div>
+          <button onClick={addNewPost}>Add</button>
           <button>Delete</button>
         </div>
-        <div className={s.post}>{postsElements}</div>
       </div>
+      <div className={s.post}>{postsElements}</div>
     </div>
   );
 };
