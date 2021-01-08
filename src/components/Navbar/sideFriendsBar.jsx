@@ -9,7 +9,9 @@ const sideFriendsBar = (props) => {
   return (
     <div className={s.friednsBar}>
       <div>
-       
+       <div className={s.imgBar}>
+         <img />
+       </div>
       </div>
     </div>
   );
