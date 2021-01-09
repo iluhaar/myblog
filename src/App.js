@@ -17,7 +17,7 @@ function App(props) {
         <div className='app-wrapper-content'>
 
           <Route path='/dialogs' render={() => <Dialogs dialogsPage={props.state.dialogsPage} />} />
-          <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage} addPost={props.addPost} onChangeArea={props.onChangeArea}/>}/> 
+          <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />} />
           <Route path='/settings' render={() => <Settings />} />
           <Route path='/Music' render={() => <Music />} />
           <Route path='/News' render={() => <News />} />

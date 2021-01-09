@@ -10,13 +10,12 @@ const MyPost = (props) => {
   let newElementPost = React.createRef();
 
   let addNewPost = () => {
-    let text = newElementPost.current.value;
-    props.addPost(text);
+    props.dispatch({type:'ADD-POST'});
   };
 
   let onChangePost = () => {
     let text = newElementPost.current.value;
-    props.onChangeArea(text);
+    props.dispatch({type:'ON-CHANGE-AREA', newText:text});
   };
   return (
     <div className={s.content}>

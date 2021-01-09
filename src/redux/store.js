@@ -34,29 +34,45 @@ let store = {
 
     ]
   },
-  getState() {
-    return this._state;
-  },
   _callSub() {
     console.log('smth changed')
   },
-  addPost() {
-    let newPost = {
-      id: 5,
-      item: this._state.profilePage.newPostText,
-      likesCount: 0
-    }
-    this._state.profilePage.posts.push(newPost)
-    this._state.profilePage.newPostText = '';
-    this._callSub(this._state);
+  getState() {
+    return this._state;
   },
-  onChangeArea(newText) {
-    this._state.profilePage.newPostText = newText
-    this._callSub(this._state);
-  },
-
   subscribe(observer) {
     this._callSub = observer;
   },
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      let newPost = {
+        id: 5,
+        item: this._state.profilePage.newPostText,
+        likesCount: 0
+      }
+      this._state.profilePage.posts.push(newPost)
+      this._state.profilePage.newPostText = '';
+      this._callSub(this._state);
+    }
+    else if (action.type === 'ON-CHANGE-AREA') {
+      this._state.profilePage.newPostText = action.newText
+      this._callSub(this._state);
+    }
+  },
 }
-export default store; 
+export default store;
+
+// addPost() {
+//   let newPost = {
+//     id: 5,
+//     item: this._state.profilePage.newPostText,
+//     likesCount: 0
+//   }
+//   this._state.profilePage.posts.push(newPost)
+//   this._state.profilePage.newPostText = '';
+//   this._callSub(this._state);
+// },
+// onChangeArea(newText) {
+//   this._state.profilePage.newPostText = newText
+//   this._callSub(this._state);
+// },
