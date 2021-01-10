@@ -5,7 +5,8 @@ const Header = () => {
   return (
     <header className={s.header}>
       <div>
-      <img сlassName={s.imgHeader} src="https://miro.medium.com/max/1000/0*wZAcNrIWFFjuJA78" alt="logo" />
+        <img src="https://static.mk.ru/upload/entities/2019/05/08/00/articles/detailPicture/c7/b5/08/6e/5dda626cb409b1fa6942c29040609e17.jpg" className={s.logoImg} alt=""/>
+      {/* <img сlassName={s.imgHeader} src="https://static.mk.ru/upload/entities/2019/05/08/00/articles/detailPicture/c7/b5/08/6e/5dda626cb409b1fa6942c29040609e17.jpg" alt="logo" /> */}
       </div>
     </header>
   );

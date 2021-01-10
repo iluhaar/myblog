@@ -4,7 +4,7 @@ import Post from "./Post/Post";
 import {
   addPostActionCreator,
   onChangeAreaActionCreator,
-} from "../../../redux/store.js";
+} from "../../../redux/profileReducer";
 
 const MyPost = (props) => {
   let newElementPost = React.createRef();
@@ -27,7 +27,6 @@ const MyPost = (props) => {
         My posts
         <div>
           <textarea
-            placeholder="Enter New Message"
             onChange={onChangePost}
             ref={newElementPost}
             value={props.newPostText}

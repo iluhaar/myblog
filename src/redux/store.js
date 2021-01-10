@@ -1,7 +1,5 @@
-const ADD_POST = "ADD-POST"
-const ON_CHANGE_AREA = "ON-CHANGE-AREA"
-const ADD_NEW_MESSAGE = "ADD-NEW-MESSAGE"
-const ON_CHANGE_MESSAGE_AREA = "ON-CHANGE-MESSAGE-AREA"
+import dialogsReducer from "./dialogsReducer"
+import profileReducer from "./profileReducer"
 
 let store = {
   _state: {
@@ -30,7 +28,7 @@ let store = {
         { id: 3, message: "Hello" },
         { id: 4, message: "Privet ia Trus" },
       ],
-      newMessageText: ['Type here..']
+      newMessageText: ['']
     },
 
     sideBar: [
@@ -50,62 +48,15 @@ let store = {
     this._callSub = observer;
   },
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      let newPost = {
-        id: 5,
-        item: this._state.profilePage.newPostText,
-        likesCount: 0
-      }
-      this._state.profilePage.posts.push(newPost)
-      this._state.profilePage.newPostText = '';
-      this._callSub(this._state);
-      debugger;
-    }
-    else if (action.type === ON_CHANGE_AREA) {
-      this._state.profilePage.newPostText = action.newText
-      this._callSub(this._state);
-    }
-    else if (action.type === ADD_NEW_MESSAGE) {
-      let addMessage = {
-        id: 5,
-        message: this._state.dialogsPage.newMessageText
-      }
-      this._state.dialogsPage.messages.push(addMessage)
-      this._state.dialogsPage.newMessageText = '';
-      this._callSub(this._state);
-    }
-    else if (action.type === ON_CHANGE_MESSAGE_AREA) {
-      this._state.dialogsPage.newMessageText = action.messageText
-      this._callSub(this._state);
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+    this._callSub(this._state);
   },
-
 }
 
-export const addMessageActionCreator = () => {
-  return {
-    type: ADD_NEW_MESSAGE,
-  };
-}
-export const onChangeMessageAreaActionCreator = (message) => {
-  return {
-    type: ON_CHANGE_MESSAGE_AREA,
-    messageText: message
-  }
-}
 
-export const addPostActionCreator = () => {
-  return {
-    type: ADD_POST
-  };
-}
 
-export const onChangeAreaActionCreator = (text) => {
-  return {
-    type: ON_CHANGE_AREA,
-    newText: text,
-  }
-}
+
 export default store;
 
 // addPost() {
@@ -122,3 +73,30 @@ export default store;
 //   this._state.profilePage.newPostText = newText
 //   this._callSub(this._state);
 // },
+// if (action.type === ADD_POST) {
+    //   let newPost = {
+    //     id: 5,
+    //     item: this._state.profilePage.newPostText,
+    //     likesCount: 0
+    //   }
+    //   this._state.profilePage.posts.push(newPost)
+    //   this._state.profilePage.newPostText = '';
+    //   debugger;
+    // }
+    // else if (action.type === ON_CHANGE_AREA) {
+    //   this._state.profilePage.newPostText = action.newText
+    //   this._callSub(this._state);
+    // }
+    // else if (action.type === ADD_NEW_MESSAGE) {
+    //   let addMessage = {
+    //     id: 5,
+    //     message: this._state.dialogsPage.newMessageText
+    //   }
+    //   this._state.dialogsPage.messages.push(addMessage)
+    //   this._state.dialogsPage.newMessageText = '';
+    //   this._callSub(this._state);
+    // }
+    // else if (action.type === ON_CHANGE_MESSAGE_AREA) {
+    //   this._state.dialogsPage.newMessageText = action.messageText
+    //   this._callSub(this._state);
+    // }
