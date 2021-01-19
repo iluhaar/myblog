@@ -7,9 +7,11 @@ import store from "./redux/redux-store";
 import { BrowserRouter } from 'react-router-dom';
 
 let rerenderEntireTree = (state) => {
+    // debugger;s
     ReactDOM.render(
         <BrowserRouter>
-            <App state={state} dispatch={store.dispatch.bind(store)} onChangeArea={store.dispatch.bind(store)} />
+            {/* <App state={state} dispatch={store.dispatch.bind(store)} onChangeArea={store.dispatch.bind(store)} /> */}
+            <App store={store}/>
         </BrowserRouter>,
         document.getElementById('root')
     );
