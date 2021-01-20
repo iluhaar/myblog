@@ -9,7 +9,6 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 
 function App(props) {
-  debugger;
   return (
     <BrowserRouter>
       <div className="app-wrapper">

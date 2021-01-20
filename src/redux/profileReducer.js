@@ -12,19 +12,25 @@ let initialState = {
 }
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             let newPost = {
                 id: 5,
                 item: state.newPostText,
                 likesCount: 0
             }
-            state.posts.push(newPost)
-            state.newPostText = '';
-            return state;
+            return {
+                ...state,
+                posts: [...state.posts, newPost],
+                newPostText: ''
 
-        case ON_CHANGE_AREA:
-            state.newPostText = action.newText
-            return state;
+            }
+        }
+        case ON_CHANGE_AREA: {
+            return {
+                ...state,
+                newPostText: action.newText
+            };
+        }
         default:
             return state;
     }
@@ -43,17 +49,3 @@ export const onChangeAreaActionCreator = (text) => {
     }
 }
 export default profileReducer;
-
-// if (action.type === ADD_POST) {
-    //     let newPost = {
-    //         id: 5,
-    //         item: state.newPostText,
-    //         likesCount: 0
-    //     }
-    //     state.posts.push(newPost)
-    //     state.newPostText = '';
-
-    // }
-    // else if (action.type === ON_CHANGE_AREA) {
-    //     state.newPostText = action.newText
-    // }

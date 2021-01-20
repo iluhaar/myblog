@@ -19,18 +19,25 @@ let initialState = {
 }
 
 const dialogsReducer = (state = initialState, action) => {
+
     switch (action.type) {
-        case ADD_NEW_MESSAGE:
+        case ADD_NEW_MESSAGE: {
             let addMessage = {
                 id: 5,
                 message: state.newMessageText
             }
-            state.messages.push(addMessage)
-            state.newMessageText = ''
-            return state;
-        case ON_CHANGE_MESSAGE_AREA:
-            state.newMessageText = action.messageText
-            return state;
+            return {
+                ...state,
+                messages: [...state.messages, addMessage],
+                newMessageText: ''
+            }
+        }
+        case ON_CHANGE_MESSAGE_AREA: {
+            return {
+                ...state,
+                newMessageText: action.messageText
+            }
+        }
         default:
             return state;
     }
@@ -48,16 +55,3 @@ export const onChangeMessageAreaActionCreator = (message) => {
     }
 }
 export default dialogsReducer;
-// if (action.type === ADD_NEW_MESSAGE) {
-    //     let addMessage = {
-    //         id: 5,
-    //         message: state.newMessageText
-    //     }
-    //     state.messages.push(addMessage)
-    //     state.newMessageText = '';
-    // }
-    // else if (action.type === ON_CHANGE_MESSAGE_AREA) {
-    //     state.newMessageText = action.messageText
-    // }
-
-    // return state;
