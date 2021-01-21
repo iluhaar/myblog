@@ -9,9 +9,8 @@
   text-decoration: none;
 }
 .item a.active {
-  color: gold;
+  color: black;
 }
-
 .sideBar a {
   color:white;
   text-decoration: none;

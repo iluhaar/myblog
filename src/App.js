@@ -7,6 +7,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
+import UsersContainer from "./components/Users/UsersContainer";
 
 function App(props) {
   return (
@@ -19,6 +20,7 @@ function App(props) {
             store={props.store} />} />
           <Route path='/profile' render={() => <Profile
             store={props.store} />} />
+          <Route path='/users' render={() => <UsersContainer />} />
           <Route path='/settings' render={() => <Settings />} />
           <Route path='/Music' render={() => <Music />} />
           <Route path='/News' render={() => <News />} />

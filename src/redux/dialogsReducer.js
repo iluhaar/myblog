@@ -19,7 +19,6 @@ let initialState = {
 }
 
 const dialogsReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case ADD_NEW_MESSAGE: {
             let addMessage = {
