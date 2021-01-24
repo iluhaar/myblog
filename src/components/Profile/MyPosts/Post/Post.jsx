@@ -7,10 +7,10 @@ const Post = (props) => {
       <img
         className={s.horeses}
         src="https://www.meme-arsenal.com/memes/807f7063ae47455ef78d5a0743509576.jpg"
+        alt="avatarPost"
       />
-      <a className={s.item}> </a>
       <div>
-        <a>{props.item}</a>
+        <a className={s.item}>{props.item}</a>
       </div>
       {props.likesCount} <span>Like</span>
     </div>
