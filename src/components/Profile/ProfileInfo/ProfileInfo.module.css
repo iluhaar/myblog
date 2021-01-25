@@ -1,10 +1,27 @@
-.bodyPI{
-    padding-left: 10px;
-    height: 300px;
+.bodyPI {
+  padding-left: 10px;
+  height: 300px;
 }
-.zobraz { 
-    border-radius: 100px; /* Радиус скругления */
-    border: 3px solid green; /* Параметры рамки */
-    box-shadow: 0 0 7px #666; /* Параметры тени */
-    height: 200px;
+.zobraz {
+  border-radius: 100px; /* Радиус скругления */
+  border: 3px solid green; /* Параметры рамки */
+  box-shadow: 0 0 7px #666; /* Параметры тени */
+  height: 200px;
+}
+
+.jobIndicatorRed {
+  width: 10px;
+  height: 10px;
+  background: red;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+}
+.jobIndicatorGreen {
+  width: 10px;
+  height: 10px;
+  background: green;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
 }

@@ -1,6 +1,6 @@
 import "./App.css";
-import Header from "./components/Header/Header";
-import Profile from "./components/Profile/Profile";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 import Nav from "./components/Navbar/Nav";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import { BrowserRouter, Route } from "react-router-dom";
@@ -13,13 +13,13 @@ function App(props) {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
-        <Header />
+        <HeaderContainer />
         <Nav />
         <div className='app-wrapper-content'>
           <Route path='/dialogs' render={() => <DialogsContainer
-            store={props.store} />} />
-          <Route path='/profile' render={() => <Profile
-            store={props.store} />} />
+          />} />
+          <Route path='/profile/:userId?' render={() => <ProfileContainer
+          />} />
           <Route path='/users' render={() => <UsersContainer />} />
           <Route path='/settings' render={() => <Settings />} />
           <Route path='/Music' render={() => <Music />} />
