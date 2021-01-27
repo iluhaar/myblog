@@ -10,7 +10,7 @@ const Post = (props) => {
         alt="avatarPost"
       />
       <div>
-        <a className={s.item}>{props.item}</a>
+        <p className={s.item}>{props.item}</p>
       </div>
       {props.likesCount} <span>Like</span>
     </div>
