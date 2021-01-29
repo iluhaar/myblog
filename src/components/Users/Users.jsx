@@ -28,25 +28,25 @@ let Users = (props) => {
           );
         })}
       </div>
-      {props.users.map((u) => (
-        <div key={u.id}>
+      {props.users.map((userID) => (
+        <div key={userID.id}>
           <span>
             <div>
-              <NavLink to={"/profile/" + u.id}>
+              <NavLink to={"/profile/" + userID.id}>
                 <img
-                  src={u.photos.small != null ? u.photos.small : userPhoto}
-                  alt={u.name}
+                  src={userID.photos.small != null ? userID.photos.small : userPhoto}
+                  alt={userID.name}
                 />
               </NavLink>
             </div>
             <div>
-              {u.followed ? (
+              {userID.followed ? (
                 <button onClick={() => {
                   // debugger;
-                    props.toggleFollowingProgress(true, u.id)
+                    props.toggleFollowingProgress(true, userID.id)
                     axios
-                      .delete(
-                        `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+                      .post(
+                        `https://social-network.samuraijs.com/api/1.0/follow/${userID.id}`, {}, 
                         {
                           withCredentials: true,
                           headers: {
@@ -56,9 +56,9 @@ let Users = (props) => {
                       )
                       .then((response) => {
                         if (response.data.resultCode === 1) {
-                          props.Unfollow(u.id);
+                          props.Unfollow(userID.id);
                         }
-                    props.toggleFollowingProgress(false, u.id)
+                    props.toggleFollowingProgress(false, userID.id)
                       });
                   }}
                 >
@@ -67,11 +67,10 @@ let Users = (props) => {
               ) : (
                 <button 
                   onClick={() => {
-                    props.toggleFollowingProgress(true, u.id)
+                    props.toggleFollowingProgress(true, userID.id)
                     axios
-                      .post(
-                        `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
-                        {},
+                      .delete(
+                        `https://social-network.samuraijs.com/api/1.0/follow/${userID.id}`,
                         {
                           withCredentials: true,
                           headers: {
@@ -81,9 +80,9 @@ let Users = (props) => {
                       )
                       .then((response) => {
                         if (response.data.resultCode === 0) {
-                          props.follow(u.id);
+                          props.follow(userID.id);
                         }
-                        props.toggleFollowingProgress(false, u.id)
+                        props.toggleFollowingProgress(false, userID.id)
                       });
                   }}
                 >
@@ -94,11 +93,11 @@ let Users = (props) => {
           </span>
           <span>
             <span>
-              <div>{u.name}</div>
+              <div>{userID.name}</div>
             </span>
-            <div>{u.status}</div>
-            <div>{"u.city"}</div>
-            <div>{"u.country"}</div>
+            <div>{userID.status}</div>
+            <div>{"userID.city"}</div>
+            <div>{"userID.country"}</div>
           </span>
         </div>
       ))}

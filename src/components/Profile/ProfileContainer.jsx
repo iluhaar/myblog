@@ -5,10 +5,11 @@ import { usersAPI } from "../../api/api";
 import { setUserProfile } from "../../redux/profileReducer";
 import Profile from "./Profile";
 class ProfileContainer extends React.Component {
+  
   componentDidMount() {
     let userId = this.props.match.params.userId;
     if (!userId) {
-      userId = 2;
+      userId = 14432;
     }
     usersAPI.getProfile(userId).then((data) => {
       this.props.setUserProfile(data);

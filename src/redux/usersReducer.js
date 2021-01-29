@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = "UN-FOLLOW"
 const SET_USERS = "SET-USERS"
@@ -96,4 +98,24 @@ export const toggleFollowingProgress = (isFetching, userID) => {
     }
 
 }
+export const getUsers = (pageSize, currentPage, pageNumber) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        usersAPI.getUsers(pageSize, currentPage, pageNumber).then((data) => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersNumber(data.totalCount));
+        });
+
+    }
+}
 export default usersReducer;
+
+
+// this.props.setCurrentPage(pageNumber);
+//     this.props.toggleIsFetching(true);
+
+//     usersAPI.getUsers(pageNumber, this.props.pageSize).then((data) => {
+//       this.props.toggleIsFetching(false);
+
+

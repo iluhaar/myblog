@@ -44,10 +44,10 @@ const ProfileInfo = (props) => {
           : "I'm not looking for a job right now"}
       </div>
       <div>
-        {Object.keys(contacts).map((contact, i) => (
-          <div contact={i}>
+        {Object.keys(contacts).map((key, i) => (
+          <div key={i}>
             <div>
-              {contacts[contact]}
+              {contacts[key]}
             </div>
           </div>
         ))}
