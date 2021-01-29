@@ -10,12 +10,14 @@ let Users = (props) => {
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
+
+  // debugger;
   return (
     <div>
       <div>
-        {pages.map((p) => {
+        {pages.map((p, i) => {
           return (
-            <span
+            <span key={i}
               className={props.currentPage === p && s.selectedPage}
               onClick={(e) => {
                 props.onPageChanged(p);
@@ -39,8 +41,9 @@ let Users = (props) => {
             </div>
             <div>
               {u.followed ? (
-                <button
-                  onClick={() => {
+                <button onClick={() => {
+                  // debugger;
+                    props.toggleFollowingProgress(true, u.id)
                     axios
                       .delete(
                         `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
@@ -55,14 +58,16 @@ let Users = (props) => {
                         if (response.data.resultCode === 1) {
                           props.Unfollow(u.id);
                         }
+                    props.toggleFollowingProgress(false, u.id)
                       });
                   }}
                 >
                   UnFollow
                 </button>
               ) : (
-                <button
+                <button 
                   onClick={() => {
+                    props.toggleFollowingProgress(true, u.id)
                     axios
                       .post(
                         `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
@@ -78,6 +83,7 @@ let Users = (props) => {
                         if (response.data.resultCode === 0) {
                           props.follow(u.id);
                         }
+                        props.toggleFollowingProgress(false, u.id)
                       });
                   }}
                 >
