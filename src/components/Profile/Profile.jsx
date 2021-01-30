@@ -1,5 +1,4 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import Preloader from "../common/preLoader/Preloader";
 import MyPostContainer from "./MyPosts/MyPostContainer";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
