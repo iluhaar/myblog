@@ -2,6 +2,7 @@ import { usersAPI } from "../api/api";
 const ADD_POST = "ADD-POST"
 const ON_CHANGE_AREA = "ON-CHANGE-AREA"
 const SET_USER_PROFILE = "SET-USER-PROFILE"
+const GET_PROFILE_STATUS = "GET-PROFILE-STATUS"
 let initialState = {
     posts: [
         { id: 1, item: "Hi, wazzup?", likesCount: 25 },
@@ -10,8 +11,11 @@ let initialState = {
         { id: 4, item: "Dobriy den", likesCount: 71 },
     ],
     newPostText: ['Henlo Pepplo!'],
-    profile: null
+    profile: null,
+    status: null,
+    
 }
+debugger;
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
@@ -35,6 +39,9 @@ const profileReducer = (state = initialState, action) => {
         }
         case SET_USER_PROFILE: {
             return { ...state, profile: action.profile }
+        }
+        case GET_PROFILE_STATUS: {
+            return { ...state, status: action.status}
         }
         default:
             return state;
@@ -69,3 +76,18 @@ export const getProfile = (userId) => {
 }
 
 export default profileReducer;
+
+
+// export const setStatus = (status) => {
+//     return {
+//         type: GET_PROFILE_STATUS,
+//         status: status
+//     }
+//  }
+// export const getStatus = (userId) => {
+//     return (dispatch) => {
+//         usersAPI.getStatus(userId).then((body) => {
+//             dispatch(setStatus(body))
+//         })
+//     }
+// }

@@ -27,8 +27,10 @@ export const usersAPI = {
   unFollow(userId) {
     return instance.delete(`follow/${userId}`,
     )
-  }
+  },
+  
 }
+
 export const authAPI = {
   getAuth() {
     return instance
@@ -36,3 +38,8 @@ export const authAPI = {
       }).then(response => response.data)
   }
 }
+
+// getStatus(userId) {
+//   return instance.get(`profile/status${userId}`)
+//     .then((response => response.body))
+// }

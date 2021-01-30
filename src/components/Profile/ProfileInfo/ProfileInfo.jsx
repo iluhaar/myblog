@@ -2,6 +2,7 @@ import React from "react";
 import s from "./ProfileInfo.module.css";
 import userPhoto from "../../../temp/img/userPhoto.jpg";
 import Preloader from "../../common/preLoader/Preloader";
+import ProfileStatus from "./ProfileStatus";
 const ProfileInfo = (props) => {
   if (!props.profile.contacts) {
     return <Preloader />;
@@ -21,14 +22,15 @@ const ProfileInfo = (props) => {
       </div>
       <div> {props.profile.fullName}</div>
       <div> {props.profile.aboutMe} </div>
-      <div>
+      <ProfileStatus status="ti pidor"/>
+      <>
         {" "}
         {props.profile.lookingForAJob !== true ? (
           props.profile.lookingForAJob
         ) : (
           <div className={s.jobIndicatorGreen}></div>
         )}
-      </div>
+      </>
       <div>
         {" "}
         {props.profile.lookingForAJob !== false ? (
