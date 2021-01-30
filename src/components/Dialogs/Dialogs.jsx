@@ -19,6 +19,7 @@ const Dialogs = (props) => {
     props.onChangeMessageArea(messageText);
   };
 
+
   return (
     <div className={s.dialogs}>
       <div className={s.dialogsItems}>{dialogsElements}</div>

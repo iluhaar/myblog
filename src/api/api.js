@@ -4,7 +4,7 @@ const instance = axios.create({
   withCredentials: true,
   baseURL: 'https://social-network.samuraijs.com/api/1.0/',
   headers: {
-    "API-KEY": '5030c85d-7a02-4610-9ad3-3f802dfecc51' 
+    "API-KEY": '5030c85d-7a02-4610-9ad3-3f802dfecc51'
   }
 })
 
@@ -15,42 +15,24 @@ export const usersAPI = {
     }
     ).then(response => response.data)
   },
-  getAuth() {
-    return instance
-      .get(`/auth/me`, {
-      }).then(response => response.data)
-  },
   getProfile(userId) {
     return instance.get(`profile/${userId}`,)
       .then((response => response.data))
   },
-  follow(userID) {
-    instance.post(`follow/${userID}`, {},
+  follow(userId) {
+    return instance.post(`follow/${userId}`, {},
     )
   },
-  unFollow(userID) {
-    instance.delete(`follow/${userID}`, {},
-    ).then(response => response.data)
+
+  unFollow(userId) {
+    return instance.delete(`follow/${userId}`,
+    )
   }
 }
-
-// export const getAuth = () => {
-//   return instance
-//     .get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-//     }).then(response => response.data)
-
-// }
-
-// export const getProfile = (userId) => {
-//   return instance.get(`profile/` + userId,)
-//     .then((response => response.data))
-// }
-
-// export const follow = (userID) => {
-//   instance.post(`follow/${userID}`, {},
-//   ).then(response => response.data)
-// }
-// export const unFollow = (userID) => {
-//   instance.post(`follow/${userID}`, {},
-//   ).then(response => response.data)
-// }
+export const authAPI = {
+  getAuth() {
+    return instance
+      .get(`/auth/me`, {
+      }).then(response => response.data)
+  }
+}

@@ -11,7 +11,7 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE-IS-FOLLOWING-PROGRES"
 let initialState = {
     users: [],
     pageSize: 4,
-    totalUsersNumber: 0,
+    totalUsersNumber: 20,
     currentPage: 1,
     isFetching: false,
     followingInProgress: []
@@ -55,18 +55,18 @@ const usersReducer = (state = initialState, action) => {
         case TOGGLE_IS_FOLLOWING_PROGRESS:
             return {
                 ...state,
-                followingInProgress: action.isFetching ? [...state.followingInProgress, action.userID] : state.followingInProgress.filter(id => id != action.userID)
+                followingInProgress: action.isFetching ? [...state.followingInProgress, action.userID] : state.followingInProgress.filter(id => id !== action.userID)
             }
         default:
             return state;
     }
 }
-export const follow = (userID) => {
+export const followSuccess = (userID) => {
     return {
         type: FOLLOW, userID
     };
 }
-export const Unfollow = (userID) => {
+export const unfollowSuccess = (userID) => {
     return {
         type: UNFOLLOW, userID
     };
@@ -109,13 +109,33 @@ export const getUsers = (pageSize, currentPage, pageNumber) => {
 
     }
 }
+export const follow = (userID) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userID))
+                    usersAPI.unFollow(userID).then((response) => {
+                      if (response.data.resultCode === 1) {
+                        dispatch(followSuccess(userID));
+                      }
+                  dispatch(toggleFollowingProgress(false, userID))
+                    }); 
+    
+    };
+
+    }
+export const unFollow = (userID) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userID))
+        usersAPI.follow(userID).then((response) => {
+          if (response.data.resultCode === 0) {
+            dispatch(unfollowSuccess(userID));
+          }
+          dispatch(toggleFollowingProgress(false, userID))
+        });  
+    
+    };
+
+    }
+
 export default usersReducer;
-
-
-// this.props.setCurrentPage(pageNumber);
-//     this.props.toggleIsFetching(true);
-
-//     usersAPI.getUsers(pageNumber, this.props.pageSize).then((data) => {
-//       this.props.toggleIsFetching(false);
 
 
