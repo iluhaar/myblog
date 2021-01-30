@@ -16,8 +16,8 @@ export const usersAPI = {
     ).then(response => response.data)
   },
   getProfile(userId) {
-    return instance.get(`profile/${userId}`,)
-      .then((response => response.data))
+    console.warn('Please use profileAPI object')
+    return profileAPI.getProfile(userId)
   },
   follow(userId) {
     return instance.post(`follow/${userId}`, {},
@@ -28,7 +28,21 @@ export const usersAPI = {
     return instance.delete(`follow/${userId}`,
     )
   },
-  
+
+}
+export const profileAPI = {
+  getProfile(userId) {
+    return instance.get(`profile/` + userId)
+      .then((response => response.data))
+  },
+  getStatus(userId) {
+    return instance.get(`profile/status/` + userId)
+  },
+  updateStatus(status) {
+    return instance.put(`profile/status`, {
+      status: status
+    })
+  }
 }
 
 export const authAPI = {
@@ -39,7 +53,3 @@ export const authAPI = {
   }
 }
 
-// getStatus(userId) {
-//   return instance.get(`profile/status${userId}`)
-//     .then((response => response.body))
-// }

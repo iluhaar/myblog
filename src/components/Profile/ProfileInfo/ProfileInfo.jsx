@@ -22,7 +22,7 @@ const ProfileInfo = (props) => {
       </div>
       <div> {props.profile.fullName}</div>
       <div> {props.profile.aboutMe} </div>
-      <ProfileStatus status="ti pidor"/>
+      <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
       <>
         {" "}
         {props.profile.lookingForAJob !== true ? (
@@ -48,9 +48,7 @@ const ProfileInfo = (props) => {
       <div>
         {Object.keys(contacts).map((key, i) => (
           <div key={i}>
-            <div>
-              {contacts[key]}
-            </div>
+            <div>{contacts[key]}</div>
           </div>
         ))}
       </div>
