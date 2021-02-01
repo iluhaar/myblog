@@ -1,6 +1,25 @@
 import React from "react";
+import { Field, reduxForm } from "redux-form";
 import s from "./MyPost.module.css";
 import Post from "./Post/Post";
+
+// const PostNEW = (props) => {
+//   return <form onSubmit={props.hanldeSubmit}>
+//       <div>
+//         <Field placeholder="Type here" name={"post"} component={"input"}></Field>
+//       </div>
+//       <div>
+//         <button> Add</button>
+//       </div>
+//       <div>
+//       <button>Delete </button>
+//       </div>
+//   </form>
+// }
+
+// const PostReduxForm = reduxForm({
+//   form:'post'
+// })(PostPostNEW)
 
 const MyPost = (props) => {
   let newElementPost = React.createRef();

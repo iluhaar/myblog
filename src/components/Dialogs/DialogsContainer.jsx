@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import {
-  addMessageActionCreator,
-  onChangeMessageAreaActionCreator,
+  addMessageActionCreator
 } from "../../redux/dialogsReducer";
 import Dialogs from "./Dialogs";
 
@@ -16,15 +15,13 @@ let mapStateToProps = (state) => {
 };
 let mapDispatchToProps = (dispatch) => {
   return {
-    SendNewMessage: () => {
-      dispatch(addMessageActionCreator());
+    SendNewMessage: (newMessageText) => {
+      dispatch(addMessageActionCreator(newMessageText));
     },
-    onChangeMessageArea: (messageText) => {
-      dispatch(onChangeMessageAreaActionCreator(messageText));
-    },
+    
   };
 };
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps)
   // withAuthRedirect
 )(Dialogs);
